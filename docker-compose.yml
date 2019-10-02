@@ -1,0 +1,31 @@
+version: '3.4'
+
+volumes:
+  rails-sync:
+    external: true
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - rails-sync:/app:nocopy
+    command: puma -C config/puma.rb
+    environment:
+      REDIS_URL: redis://redis
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres:9.6-alpine
+    volumes:
+      - ./tmp/db_data:/var/lib/postgresql/data
+  redis:
+    image: redis:5.0.5-alpine
+  # mailcatcher:
+  #   image: schickling/mailcatcher
+  #   command: mailcatcher --no-quit --foreground --ip=0.0.0.0 -v
+  #   ports:
+  #     - "1080:1080"
