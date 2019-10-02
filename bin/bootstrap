@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+function cleanup() {
+  echo "Cleaning up"
+  docker-sync stop
+}
+
+trap cleanup EXIT
+set -e
+
+docker volume create --name=rails-sync
+docker-sync start
+
+docker-compose build
+
+./bin/bundle_install
+./bin/run yarn install
+./bin/run rake db:create db:migrate
