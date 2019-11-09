@@ -27,5 +27,7 @@ module App
     config.logger = ActiveSupport::TaggedLogging.new(logger)
 
     config.lograge.enabled = true
+    config.active_job.queue_adapter = :resque
+    config.active_job.queue_name_prefix = "app_#{Rails.env}"
   end
 end

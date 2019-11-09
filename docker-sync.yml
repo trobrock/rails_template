@@ -4,7 +4,7 @@ options:
   verbose: false
 
 syncs:
-  rails-sync:
+  rails-sync-template:
     src: './'
     host_disk_mount_mode: 'cached' # see https://docs.docker.com/docker-for-mac/osxfs-caching/#cached
     sync_excludes:
