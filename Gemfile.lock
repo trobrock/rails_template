@@ -65,6 +65,7 @@ GEM
       zeitwerk (~> 2.1, >= 2.1.8)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
@@ -82,6 +83,12 @@ GEM
       rake (< 13.0)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
+    devise (4.7.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     erubi (1.9.0)
     et-orbi (1.2.2)
       tzinfo
@@ -145,6 +152,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
+    orm_adapter (0.5.0)
     pg (1.1.4)
     public_suffix (4.0.1)
     puma (3.12.1)
@@ -208,6 +216,9 @@ GEM
     remotipart (1.4.3)
     request_store (1.4.1)
       rack (>= 1.4)
+    responders (3.0.0)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     resque (2.0.0)
       mono_logger (~> 1.0)
       multi_json (~> 1.0)
@@ -272,6 +283,8 @@ GEM
       thread_safe (~> 0.1)
     vegas (0.1.11)
       rack (>= 1.0.0)
+    warden (1.2.8)
+      rack (>= 2.0.6)
     web-console (4.0.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -300,6 +313,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  devise
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   lograge
