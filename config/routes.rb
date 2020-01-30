@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   mount Resque::Server.new, at: '/resque', constraints: AdminConstraint.new
 
   devise_for :users
+
+  root to: 'home#index'
 end
