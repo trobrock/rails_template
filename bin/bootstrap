@@ -8,7 +8,7 @@ function cleanup() {
 trap cleanup EXIT
 set -e
 
-docker volume create --name=rails-sync
+docker volume create --name=rails-sync-template
 docker-sync start
 
 docker-compose build
