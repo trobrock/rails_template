@@ -1,23 +1,43 @@
 version: '3.4'
 
 volumes:
-  rails-sync:
+  rails-sync-template:
     external: true
 
 services:
   app:
+    image: rails-app:latest
     build:
       context: .
     ports:
       - "3000:3000"
     volumes:
-      - rails-sync:/app:nocopy
+      - rails-sync-template:/app:nocopy
     command: puma -C config/puma.rb
     environment:
       REDIS_URL: redis://redis
     depends_on:
       - db
       - redis
+  worker:
+    image: rails-app:latest
+    volumes:
+      - rails-sync-template:/app:nocopy
+    command: rails resque:work
+    environment:
+      REDIS_URL: redis://redis
+      QUEUE: '*'
+    depends_on:
+      - app
+  scheduler:
+    image: rails-app:latest
+    volumes:
+      - rails-sync-template:/app:nocopy
+    command: rails resque:scheduler
+    environment:
+      REDIS_URL: redis://redis
+    depends_on:
+      - app
   db:
     image: postgres:9.6-alpine
     volumes:
