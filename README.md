@@ -9,5 +9,5 @@ This is used to create the docker volume and sync configuration.
 
 ```
 bin/bootstrap
-foreman start
+bin/start
 ```
