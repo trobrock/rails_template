@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 gem 'active_scheduler'
+gem 'bootstrap', '~> 4.4.1'
 gem 'devise'
 gem 'jbuilder', '~> 2.7'
 gem 'lograge'
