@@ -32,3 +32,4 @@ yarn-debug.log*
 .yarn-integrity
 .rubocop-https---raw-githubusercontent-com-trobrock-style-guides-master-ruby-style-yml
 .docker-sync/
+coverage
